@@ -1,10 +1,10 @@
 #!/bin/bash
-try() {
+assert() {
 	expected="$1"
 	input="$2"
 
 	./9cc "$input" > tmp.s
-	gcc -o tmp tmp.s
+	cc -o tmp tmp.s
 	./tmp
 	actual="$?"
 
@@ -16,7 +16,7 @@ try() {
 	fi
 }
 
-try 0 0
-try 42 42
+assert 0 0
+assert 42 42
 
 echo OK
